@@ -143,6 +143,61 @@ footer{margin-top:28px;font-size:12px;color:var(--muted);display:flex;justify-co
   nav.links{margin-left:0}
 }
 @media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+
+/* Portfolio */
+.pf-hero{padding-block:44px 30px;display:grid;gap:12px}
+.pf-hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,8vw,68px);line-height:1.05;margin:0;display:grid;gap:10px}
+.pf-hero h1 span{font-family:var(--font-body);font-weight:700;font-size:clamp(18px,2.6vw,24px);line-height:1.35;text-wrap:balance}
+.pf-hero p{margin:0;color:var(--muted);max-width:62ch}
+.pf-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:10px 0 0;background:var(--paper);border:1.5px solid var(--ink);border-radius:4px;max-width:720px}
+.pf-stats div{padding:12px 14px;border-right:1px solid var(--line);min-width:0}
+.pf-stats div:last-child{border-right:0}
+.pf-stats dt{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.pf-stats dd{margin:0;font-family:var(--font-display);font-size:28px;line-height:1.2;font-variant-numeric:tabular-nums}
+.pf-sec{padding-block:26px;border-top:1px dashed var(--line)}
+.pf-h{font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+.pf-h small{font-size:11px;color:var(--callout);margin-left:6px;letter-spacing:0}
+.pf-feat{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.pf-case{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:18px;display:grid;gap:8px;align-content:start;min-width:0}
+.pf-case header{display:flex;gap:10px;align-items:center;font-family:var(--font-mono);font-size:11px;color:var(--muted);flex-wrap:wrap}
+.pf-no{width:24px;height:24px;border-radius:50%;background:var(--callout);color:var(--callout-ink);display:grid;place-items:center;font-size:11px}
+.pf-role{margin-left:auto;color:var(--ink);border:1px solid var(--ink);border-radius:3px;padding:1px 6px}
+.pf-case h3{margin:0;font-size:18px;line-height:1.4;text-wrap:balance}
+.pf-client{margin:0;font-size:13px;color:var(--muted)}
+.pf-case ul{margin:0;padding-left:18px;font-size:14px}
+.pf-case li{margin-bottom:3px}
+.pf-two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px}
+.pf-chips{display:flex;flex-wrap:wrap;gap:6px}
+.pf-chips span{background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:5px 10px;font-size:13px}
+.pf-chips.tool span{background:var(--chip);border-color:transparent;font-family:var(--font-mono);font-size:12px}
+.pf-pat{margin:0;padding:0;list-style:none;display:grid;gap:8px;counter-reset:p}
+.pf-pat li{counter-increment:p;display:grid;grid-template-columns:28px 1fr;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:10px 12px;font-size:14px}
+.pf-pat li::before{content:counter(p);font-family:var(--font-mono);font-size:12px;color:var(--callout)}
+.pf-career{list-style:none;margin:0;padding:0;display:grid}
+.pf-career li{display:grid;grid-template-columns:170px 1fr;gap:16px;padding-block:12px;border-bottom:1px solid var(--line)}
+.pf-career b{font-size:16px}
+.pf-career em{font-style:normal;font-size:13px;color:var(--callout);margin-left:6px}
+.pf-career p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.pf-per{font-family:var(--font-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pf-histhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.pf-histhead .pf-h{margin:0}
+.pf-filter{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pf-filter input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:6px 10px;min-width:0;width:200px}
+.pf-tbl{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:4px}
+.pf-tbl table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+.pf-tbl th{text-align:left;font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--muted);padding:10px 12px;border-bottom:1.5px solid var(--ink)}
+.pf-tbl td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.pf-tbl td small{display:block;color:var(--muted);font-size:12px}
+.pf-tbl tr.pf-yr td{background:var(--chip);font-family:var(--font-display);font-size:18px;padding-block:4px}
+.pf-empty{text-align:center;color:var(--muted);padding:30px}
+@media (max-width:640px){
+  .pf-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pf-stats div:nth-child(2){border-right:0}
+  .pf-stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .pf-two{grid-template-columns:1fr}
+  .pf-career li{grid-template-columns:1fr;gap:4px}
+  .pf-filter input{width:100%}
+}
 </style>
 
 
@@ -153,6 +208,7 @@ footer{margin-top:28px;font-size:12px;color:var(--muted);display:flex;justify-co
     <a class="logo" href="#top"><i aria-hidden="true"></i>나만의 AI 기획자</a>
     <nav class="links" aria-label="주요 메뉴">
       <a href="#top">가이드</a>
+      <a href="#portfolio">포트폴리오</a>
       <a href="#about">소개</a>
       <a href="#about">문의</a>
     </nav>
@@ -410,10 +466,123 @@ function doCopy(el,btn){
   const fallback=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);done(false)};
   try{navigator.clipboard.writeText(txt).then(()=>done(true),fallback)}catch(e){fallback()}
 }
+const HISTORY=[["2026.03~2026.04", "한국음악저작권협회", "한국음악저작권협회", "한경정보기술국", "기획", "UI UX 백 엔드 고도화 프로젝트 시스템 기획"], ["2025.08~2025.12", "LG 에너지 솔루션IPMS(특허관리시스템) 개발", "LG 에너지 솔루션", "LG CNS", "기획총괄 PM", "UI UX 백 엔드 고도화 프로젝트 시스템 기획"], ["2024.08~2025.08", "SBS 차세대 NDS(News Digital System)", "SBS", "제머나이소프트", "기획총괄 PL", "UI UX 기획, 디자인, 퍼블리싱 총괄 리딩"], ["2024.01~2024.06", "LG 전자 글로벌 플랫폼 구축 개발", "LG전자", "THE-51", "기획", "AWS, Adobe AEM, Magento, MKT 콘텐츠 기획, UI UX 기획,"], ["2021.02~2023.12", "SK 텔링크 운영", "SK텔링크", "아이브랩", "사업관리, 기획", "SK텔링크 운영 사업 관리 및 사내몰(이커머스)서비스 기획 PM, 기획PL 공통 UI/UX  Front App., Back Office 기획"], ["2021.01~2021.02", "차세대 교육관리통합시스템 구축(1단계) 사업", "보건복지부", "교림소프트", "기획", "PM, 기획PL 공통 UI/UX,  Back Office 기획"], ["2020.10~2020.12", "고용정보원 중앙부처 연계 사업", "고용정보원", "오티아이", "분석, 기획", ""], ["2020.05~2020.12", "고용정보원 HRD-Net 개편사업", "고용정보원", "엑사소프트", "기획", ""], ["2019.04~2019.12", "노원구서비스공단 통합예약사이트구축", "노원구서비스공단", "인프라큐브", "사업관리, 분석, 기획", ""], ["2019.04~2019.12", "삼성 S20 허블 이벤트", "제일기획", "와이즈씨", "설계, 기획", ""], ["2019.03~2019.11", "통일연구원", "통일연구원", "인프라큐브", "기획", ""], ["2019.02~2019.07", "한경닷컴", "한경닷컴", "인프라큐브", "기획", ""], ["2019.01~2019.04", "나비엠알오", "나비엠알오", "인프라큐브", "설계, 기획", ""], ["2018.12~2019.05", "소득주도성장 특별위원회 홈페이지 신규구축", "소득주도성장특별위원회", "인프라큐브", "사업관리, 기획", ""], ["2018.11~2019.05", "한국식품연구원", "한국식품연구원", "인프라큐브", "기획", ""], ["2018.11~2019.01", "SK 하이닉스 청년 희망나눔", "SK하이닉스", "인프라큐브", "기획", ""], ["2018.08~2018.10", "강원임베디드", "강원임베디드", "인프라큐브", "기획", ""], ["2018.06~2019.06", "성남도시개발공사 통합운영 관리시스템", "성남종합운동장", "인프라큐브", "사업관리, 기획", ""], ["2018.05~2018.06", "아미코스메틱", "아미코스메틱", "인프라큐브", "설계, 기획", ""], ["2018.04~2018.06", "경기관광공사", "경기관광공사", "인프라큐브", "사업관리, 기획", ""], ["2018.03~2018.08", "SK공유인프라 시스템 개발", "SK네트웍스", "인프라큐브", "설계, 기획", ""], ["2018.02~2018.06", "파고다 어학원", "파고다어학원", "인프라큐브", "설계, 기획", ""], ["2018.01~2018.04", "블루버드", "블루버드", "인프라큐브", "설계, 기획", ""], ["2017.12~2018.05", "농수산대학교", "농수산대학교", "인프라큐브", "기획", ""], ["2017.04~2017.12", "KMA 한국능률협회 사이트 개발", "한국능률협회", "인프라큐브", "설계, 기획", ""], ["2017.01~2017.09", "문화누리카드 사이트 개발", "", "", "기획", ""], ["2016.12~2017.03", "공간기반 정책지원체계", "국토교통부", "", "기획", ""], ["2016.06~2016.12", "지적측량바로처리센터", "LX한국국토정보공사", "", "개발 기획", "이벤트 기획"], ["2016.04~2016.06", "해양항만센터", "해양항만센터", "", "기획", "메인 페이지 UI/UX 기획"], ["2016.01~2016.04", "하늘지도_skymaps", "삼아항업", "", "PM", ""], ["2015~2017", "문화누리카드 홈페이지 기능 개선 사업", "한국문화예술위원회(ARKO)", "", "제안·컨설팅", "제안, PT, 기술협상"], ["2015~2017", "제주관광정보(visitjeju.net) 콘텐츠 확충 및 기능개선", "제주관광공사", "", "PM", ""], ["2015~2017", "홈페이지 통·폐합 등 개선 (DB 마이그레이션 포함)", "한국지역진흥재단", "", "PM", ""], ["2015~2017", "사이버포탈 구축에 따른 홈페이지 개편", "한국공항공사", "", "PM", ""], ["2015~2017", "동반성장센터 홈페이지 구축", "한국가스공사", "", "PM", ""], ["2015~2017", "홈페이지 및 쇼핑몰 구축 (재고·상품·판매·시리얼 관리)", "비비마스크", "", "PM", ""], ["2015~2017", "유니엘제트항공 홈페이지 구축", "유니엘제트항공", "", "기획·컨설팅", ""], ["2015~2017", "사이버캠퍼스 학습관리시스템(LMS) 구축", "신구대학교", "", "PM", ""], ["2015~2017", "외국어 홈페이지 및 웹접근성 적용 홈페이지 구축", "전주비전대학교·평택대학교", "", "PM", ""], ["2015.09~2016.01", "도로명주소 길라잡이", "LX한국국토정보공사", "", "기획", ""], ["2015.05~2015.09", "TAAS (교통사고분석시스템)", "도로교통공단", "", "기획", ""], ["2015.04~2015.05", "가스배관망 정보시스템 교체구축 용역", "한국가스공사", "", "기획", ""], ["2015.01~2015.03", "기업은행 모바일 서비스개편", "", "", "기획", ""], ["2014.01~2014.12", "보험개발원 차히스토리 사이트구축", "", "", "기획", ""], ["2013.07~2014.01", "경기평생진흥원", "경기평생진흥원", "", "기획", ""], ["2012.08~2013.03", "월드웹", "웹스 미디어", "", "기획", ""], ["2012.05~2012.07", "현대카드(이벤트기획)", "현대카드", "", "기획", ""], ["2012.03~2012.04", "월드웹 웹사이트 리뉴얼", "웹스미디어", "", "기획 PL", ""], ["2012.02~2012.05", "WINUS 기업시스템 .NET 기능 보완개발", "㈜위니맥스", "㈜테크리드", "기획", ""], ["2011.12~2012.01", "LG U+ DMI 온넷21 패키지 기능 개발", "LG U+ DMI", "㈜테크리드", "기획", ""], ["2011.02~2011.11", "KIST 유헬스 모니터링 시스템 개발", "KIST", "㈜테크리드", "기획", ""], ["2010.09~2011.02", "SK PM 서비스 .NET 서버 개발", "필링크", "㈜테크리드", "PM", ""], ["2010.07~2010.08", "Android iGolfcart 서비스개발", "SKT", "㈜테크리드", "기획", ""], ["2010.03~2010.06", "SKT Open Innovation 시스템개발", "SKT", "㈜테크리드", "PM", ""], ["2010.01~2010.02", "온세CMS 암호화 시스템 (Web & Mobile)", "온세텔레콤", "㈜테크리드", "기획", ""], ["2009.10~2009.12", "SKT Open Innovation 시스템개발", "SKT", "㈜테크리드", "PM", ""], ["2009.07~2009.10", "LG CNS", "", "㈜테크리드", "PM", ""], ["2009.06~2009.08", "중동고등학교", "", "㈜테크리드", "PM", ""], ["2009.05~2010.05", "세광알미늄", "세광알미늄", "㈜테크리드", "기획 PL", ""], ["2009.04~2009.09", "온세 CMS (Cash Management Service)", "온세텔레콤", "㈜테크리드", "기획 PL", ""], ["2009.04~2010.02", "코마스", "", "㈜테크리드", "기획", ""], ["2009.03~2009.05", "㈜지어소프트", "", "㈜테크리드", "기획", ""], ["2009.03~2010.05", "한국가스안전공사", "한국가스안전공사", "㈜테크리드", "기획 PL", ""], ["2008.10~2009.03", "대교MOS", "㈜대교 눈높이", "㈜테크리드", "PM", ""], ["2008.05~2008.10", "부산대학교 기계공학 연구정보센터", "부산대학교", "㈜테크리드", "기획", ""], ["2008.01~2009.01", "전기안전공사", "KESCO", "㈜테크리드", "", "CDM 이벤트 기획 관리"], ["2008.01~2009.01", "삼성물산", "삼성물산", "㈜테크리드", "", ""], ["2007.10~2007.12", "KESCO", "", "팍시아소프트", "", ""], ["2007.07~2007.09", "Open RSS", "팍시아소프트", "㈜테크리드", "분석, 기획", ""]];
+const PROFILE={
+  name:"임호동",role:"웹 서비스 기획 PM · 기획PL",
+  intro:"시장 분석과 제안부터 화면설계, 개발 조율, 완료 보고까지 사업 전 과정을 맡아 온 기획자입니다. 요구가 복잡하고 리스크가 큰 사업에서 주로 PM이나 기획PL을 맡아 왔어요.",
+  stats:[["2005~","실무 시작"],["69+","참여 프로젝트"],["4건","특허 등록"],["PM·PL","주요 역할"]],
+  skills:["서비스·정책 설계","IA · Navigation Flow","화면설계 · 스토리보드","요구분석 · 기능명세","제안서 · PT · 기술협상","사업·일정·인력 관리","Back Office · e-Commerce","웹표준 · 접근성"],
+  tools:["PowerPoint","Excel","Figma","Photoshop","Illustrator","HTML/CSS","JIRA","Slack"]
+};
+const FEATURED=[
+ {y:"2026",per:"2026 · 진행 중",name:"대한의사협회 통합 플랫폼 리뉴얼 (2차 사업)",client:"대한의사협회",role:"기획",
+  tags:["회원통합","관리자 대시보드","권한 설계"],
+  pts:["협회가 운영하는 여러 사이트의 회원을 하나의 통합회원으로 관리하는 회원 정책과 가입·마이페이지 화면 기획","총괄 관리자·지부(시도/시군구) 관리자용 대시보드 기획","권한에 따라 화면이 달라지는 선거관리 화면 기획"]},
+ {y:"2025",per:"2025.08 – 2025.12",name:"LG에너지솔루션 IPMS (특허관리시스템) 개발",client:"LG에너지솔루션",via:"LG CNS",role:"기획총괄 PM",
+  tags:["시스템 기획","UI/UX","백엔드 고도화"],
+  pts:["특허관리시스템 UI/UX 및 백엔드 고도화 시스템 기획 총괄","PM으로 기획 범위와 일정 관리"]},
+ {y:"2024",per:"2024.08 – 2025.08",name:"SBS 차세대 NDS (News Digital System)",client:"SBS",via:"제머나이소프트",role:"기획총괄 PL",
+  tags:["CMS","보도 시스템","디자인·퍼블리싱 리딩"],
+  pts:["NDS 및 CMS 시스템 리뉴얼 기획 총괄","UI/UX 기획, 디자인, 퍼블리싱 파트 총괄 리딩"]},
+ {y:"2024",per:"2024.01 – 2024.06",name:"LG전자 글로벌 마케팅 플랫폼 Rollout (GP2RO)",client:"LG전자",via:"THE-51",role:"기획",
+  tags:["lg.com","Adobe AEM","Magento","AWS"],
+  pts:["lg.com 글로벌 확산(Rollout) 프로젝트의 마케팅 콘텐츠 기획","AEM·Magento 기반 UI/UX 기획"]},
+ {y:"2021",per:"2021.02 – 2023.12",name:"SK텔링크 운영 및 사내몰 서비스",client:"SK텔링크",via:"아이브랩",role:"사업관리 · 기획 PM",
+  tags:["운영","이커머스","Back Office"],
+  pts:["3년간 운영 사업 관리","사내몰(이커머스) 서비스 기획 PM","공통 UI/UX, Front App, Back Office 기획"]},
+ {y:"2026",per:"2026.03 – 2026.04",name:"한국음악저작권협회 시스템 고도화",client:"한국음악저작권협회",via:"한경정보기술",role:"기획",
+  tags:["시스템 기획","UI/UX"],
+  pts:["UI/UX 및 백엔드 고도화 시스템 기획"]}
+];
+const CAREER=[
+ ["2021.02 ~","㈜아이브랩","기획영업 부장","SK텔링크 운영, 대형 SI 프로젝트 기획 PM·PL 참여"],
+ ["2017.08 ~ 2019.12","㈜인프라큐브","PM","공공·기업 홈페이지 및 통합운영 시스템 20여 건 사업관리·기획"],
+ ["2015.07 ~ 2017.04","㈜이프커뮤니티","기획영업 · PL","공공기관 홈페이지 개편, LMS·쇼핑몰 구축 PM, 제안·PT"],
+ ["2007.03 ~ 2013.07","㈜테크리드","전략기획실장","통신사 플랫폼, 모바일 앱, CMS 사업 수주·개발 PM, 특허 4건"],
+ ["2005.06 ~ 2007.02","㈜하이네트정보통신","전략기획실장","이동통신 3사 벨소리 서비스 운영 PM, 통신사 제휴 상품 기획"]
+];
+const PATENTS=["모바일 메신저에서 화자 간 대화 유출 방지 시스템","위치 아이템을 이용한 모바일 마케팅 시스템","소셜커머스 활성화를 위한 공공구매 결제 시스템","가상 이동단말 시스템"];
+
+const hEsc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pState={q:"",role:""};
+function renderPortfolio(){
+  app.innerHTML=`
+  <section class="pf-hero" id="pf-top">
+    <span class="eyebrow">Portfolio · ${hEsc(PROFILE.role)}</span>
+    <h1>${hEsc(PROFILE.name)}<span>기획에서 오픈까지, 사업 전체를 설계합니다</span></h1>
+    <p>${hEsc(PROFILE.intro)}</p>
+    <dl class="pf-stats">${PROFILE.stats.map(s=>`<div><dt>${hEsc(s[1])}</dt><dd>${hEsc(s[0])}</dd></div>`).join("")}</dl>
+  </section>
+
+  <section class="pf-sec">
+    <h2 class="pf-h">대표 프로젝트</h2>
+    <div class="pf-feat">${FEATURED.map((f,i)=>`
+      <article class="pf-case">
+        <header><span class="pf-no">${String(i+1).padStart(2,"0")}</span><span>${hEsc(f.per)}</span><span class="pf-role">${hEsc(f.role)}</span></header>
+        <h3>${hEsc(f.name)}</h3>
+        <p class="pf-client">${hEsc(f.client)}${f.via?` · 수행 ${hEsc(f.via)}`:""}</p>
+        <ul>${f.pts.map(p=>`<li>${hEsc(p)}</li>`).join("")}</ul>
+        <div class="tags">${f.tags.map(t=>`<span class="tag">${hEsc(t)}</span>`).join("")}</div>
+      </article>`).join("")}</div>
+  </section>
+
+  <section class="pf-sec pf-two">
+    <div>
+      <h2 class="pf-h">핵심 역량</h2>
+      <div class="pf-chips">${PROFILE.skills.map(s=>`<span>${hEsc(s)}</span>`).join("")}</div>
+      <h2 class="pf-h" style="margin-top:22px">사용 도구</h2>
+      <div class="pf-chips tool">${PROFILE.tools.map(s=>`<span>${hEsc(s)}</span>`).join("")}</div>
+    </div>
+    <div>
+      <h2 class="pf-h">특허 등록</h2>
+      <ol class="pf-pat">${PATENTS.map(p=>`<li>${hEsc(p)}</li>`).join("")}</ol>
+    </div>
+  </section>
+
+  <section class="pf-sec">
+    <h2 class="pf-h">경력</h2>
+    <ol class="pf-career">${CAREER.map(c=>`<li><span class="pf-per">${hEsc(c[0])}</span><div><b>${hEsc(c[1])}</b> <em>${hEsc(c[2])}</em><p>${hEsc(c[3])}</p></div></li>`).join("")}</ol>
+  </section>
+
+  <section class="pf-sec">
+    <div class="pf-histhead">
+      <h2 class="pf-h">전체 프로젝트 이력 <small id="pf-cnt"></small></h2>
+      <div class="pf-filter">
+        <input id="pf-q" type="search" placeholder="고객사·프로젝트 검색" aria-label="프로젝트 검색">
+        <div class="chips" id="pf-roles"></div>
+      </div>
+    </div>
+    <div class="pf-tbl"><table>
+      <thead><tr><th>기간</th><th>프로젝트</th><th>고객사</th><th>역할</th></tr></thead>
+      <tbody id="pf-body"></tbody>
+    </table></div>
+  </section>
+  ${aboutHTML()}`;
+  const roles=[["","전체"],["PM","PM"],["PL","PL"],["기획","기획"]];
+  const q=document.getElementById("pf-q");
+  q.addEventListener("input",()=>{pState.q=q.value;drawHist()});
+  document.getElementById("pf-roles").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;pState.role=b.dataset.v;drawHist()});
+  function drawHist(){
+    document.getElementById("pf-roles").innerHTML=roles.map(r=>`<button class="chip" data-v="${r[0]}" aria-pressed="${pState.role===r[0]}">${r[1]}</button>`).join("");
+    const w=pState.q.trim().toLowerCase();
+    const list=HISTORY.filter(h=>{
+      if(pState.role&&!h[4].includes(pState.role))return false;
+      if(w&&!(h.join(" ").toLowerCase().includes(w)))return false;return true});
+    let last="";
+    document.getElementById("pf-body").innerHTML=list.length?list.map(h=>{
+      const yr=h[0].slice(0,4);const head=yr!==last?`<tr class="pf-yr"><td colspan="4">${yr}</td></tr>`:"";last=yr;
+      return head+`<tr><td class="pf-per">${hEsc(h[0])}</td><td><b>${hEsc(h[1])}</b>${h[5]?`<small>${hEsc(h[5])}</small>`:""}</td><td>${hEsc(h[2]||"-")}${h[3]?`<small>수행 ${hEsc(h[3])}</small>`:""}</td><td>${hEsc(h[4]||"-")}</td></tr>`}).join("")
+      :`<tr><td colspan="4" class="pf-empty">조건에 맞는 프로젝트가 없어요.</td></tr>`;
+    document.getElementById("pf-cnt").textContent=`${list.length}건`;
+  }
+  drawHist();bindCopy();window.scrollTo(0,0);
+}
+
 function route(){
   const id=location.hash.slice(1);
   const g=GUIDES.find(x=>x.id===id);
   if(g){renderDetail(g);return}
+  if(id==="portfolio"){renderPortfolio();return}
   if(!document.getElementById("grid"))renderList();
   if(id==="about"){document.getElementById("about").scrollIntoView()}
   else if(id==="top"){window.scrollTo(0,0)}
