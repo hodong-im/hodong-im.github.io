@@ -144,6 +144,18 @@ footer{margin-top:28px;font-size:12px;color:var(--muted);display:flex;justify-co
 }
 @media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
 
+
+/* Shorts */
+.short-wrap{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:20px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px}
+.short-wrap video,.sh-card video{width:100%;aspect-ratio:9/16;max-width:100%;border-radius:6px;background:#1b2230;display:block}
+.short-wrap h3{margin:0 0 6px;font-size:15px}
+.short-wrap p{margin:0;color:var(--muted);font-size:14px}
+.tag.sh{border-color:var(--callout);color:var(--callout)}
+.sh-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.sh-card{display:grid;gap:8px;min-width:0}
+.sh-card a{font-size:13px;font-weight:500;text-decoration:none;line-height:1.4}
+.sh-card span{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+@media (max-width:640px){.short-wrap{grid-template-columns:1fr}.short-wrap video{max-width:280px}}
 /* Portfolio */
 .pf-hero{padding-block:44px 30px;display:grid;gap:12px}
 .pf-hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,8vw,68px);line-height:1.05;margin:0;display:grid;gap:10px}
@@ -208,6 +220,7 @@ footer{margin-top:28px;font-size:12px;color:var(--muted);display:flex;justify-co
     <a class="logo" href="#top"><i aria-hidden="true"></i>나만의 AI 기획자</a>
     <nav class="links" aria-label="주요 메뉴">
       <a href="#top">가이드</a>
+      <a href="#shorts">쇼츠</a>
       <a href="#portfolio">포트폴리오</a>
       <a href="#about">소개</a>
       <a href="#about">문의</a>
@@ -377,7 +390,7 @@ function card(g){
     <div class="meta"><span>${docId(g)}</span><span class="topic">${esc(g.topic)}</span></div>
     <h3>${esc(g.title)}</h3>
     <p>${esc(g.summary)}</p>
-    <div class="foot"><span>${g.min}분 · ${g.steps.length}단계</span><span class="tags">${g.tools.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</span></div>
+    <div class="foot"><span>${g.min}분 · ${g.steps.length}단계</span><span class="tags"><span class="tag sh">▶ 쇼츠</span>${g.tools.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</span></div>
   </a>`;
 }
 function chips(list,key,countFn){
@@ -433,6 +446,10 @@ function renderDetail(g){
       </dl>
       <div class="doc-title"><h1>${esc(g.title)}</h1><p>${esc(g.summary)} <span style="white-space:nowrap">· ${g.min}분</span></p></div>
     </header>
+    <section class="short-wrap" aria-label="쇼츠 영상">
+      <video controls playsinline preload="none" poster="shorts/${docId(g)}.jpg" src="shorts/${docId(g)}.mp4"></video>
+      <div><h3>1분 쇼츠로 먼저 보기</h3><p>이 가이드의 핵심을 세로 영상으로 정리했어요. 아래 단계별 설명과 복사용 템플릿을 함께 보세요.</p></div>
+    </section>
     <ol class="steps">
       ${g.steps.map((s,i)=>`<li class="step"><span class="num">${i+1}</span><div class="step-body"><h2>${esc(s.t)}</h2>${s.b}</div></li>`).join("")}
     </ol>
@@ -578,11 +595,21 @@ function renderPortfolio(){
   drawHist();bindCopy();window.scrollTo(0,0);
 }
 
+function renderShorts(){
+  app.innerHTML=`<section class="hero" id="top"><span class="eyebrow">Shorts · ${GUIDES.length} videos</span>
+    <h1>1분이면 끝나는<br><em>기획 실무 쇼츠</em></h1>
+    <p>가이드마다 핵심만 뽑아 세로 영상으로 만들었어요. 제목을 누르면 전체 가이드와 템플릿으로 이동해요.</p></section>
+  <div class="sh-grid">${GUIDES.map(g=>`<div class="sh-card"><video controls playsinline preload="none" poster="shorts/${docId(g)}.jpg" src="shorts/${docId(g)}.mp4"></video>
+    <span>${docId(g)} · ${esc(g.topic)}</span><a href="#${g.id}">${esc(g.title)}</a></div>`).join("")}</div>
+  ${aboutHTML()}`;
+  bindCopy();window.scrollTo(0,0);
+}
 function route(){
   const id=location.hash.slice(1);
   const g=GUIDES.find(x=>x.id===id);
   if(g){renderDetail(g);return}
   if(id==="portfolio"){renderPortfolio();return}
+  if(id==="shorts"){renderShorts();return}
   if(!document.getElementById("grid"))renderList();
   if(id==="about"){document.getElementById("about").scrollIntoView()}
   else if(id==="top"){window.scrollTo(0,0)}
