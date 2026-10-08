@@ -447,7 +447,7 @@ function renderDetail(g){
       <div class="doc-title"><h1>${esc(g.title)}</h1><p>${esc(g.summary)} <span style="white-space:nowrap">· ${g.min}분</span></p></div>
     </header>
     <section class="short-wrap" aria-label="쇼츠 영상">
-      <video controls playsinline preload="none" poster="shorts/${docId(g)}.jpg" src="shorts/${docId(g)}.mp4"></video>
+      <video controls playsinline preload="none" poster="${docId(g)}.jpg" src="${docId(g)}.mp4"></video>
       <div><h3>1분 쇼츠로 먼저 보기</h3><p>이 가이드의 핵심을 세로 영상으로 정리했어요. 아래 단계별 설명과 복사용 템플릿을 함께 보세요.</p></div>
     </section>
     <ol class="steps">
@@ -599,7 +599,7 @@ function renderShorts(){
   app.innerHTML=`<section class="hero" id="top"><span class="eyebrow">Shorts · ${GUIDES.length} videos</span>
     <h1>1분이면 끝나는<br><em>기획 실무 쇼츠</em></h1>
     <p>가이드마다 핵심만 뽑아 세로 영상으로 만들었어요. 제목을 누르면 전체 가이드와 템플릿으로 이동해요.</p></section>
-  <div class="sh-grid">${GUIDES.map(g=>`<div class="sh-card"><video controls playsinline preload="none" poster="shorts/${docId(g)}.jpg" src="shorts/${docId(g)}.mp4"></video>
+  <div class="sh-grid">${GUIDES.map(g=>`<div class="sh-card"><video controls playsinline preload="none" poster="${docId(g)}.jpg" src="${docId(g)}.mp4"></video>
     <span>${docId(g)} · ${esc(g.topic)}</span><a href="#${g.id}">${esc(g.title)}</a></div>`).join("")}</div>
   ${aboutHTML()}`;
   bindCopy();window.scrollTo(0,0);
