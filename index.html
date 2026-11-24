@@ -55,7 +55,7 @@ header.top{
 .logo i{display:inline-block;width:22px;height:16px;border:2px solid var(--ink);border-radius:2px;position:relative}
 .logo i::after{content:"";position:absolute;left:50%;top:4px;width:6px;height:2px;margin-left:-3px;background:var(--callout)}
 nav.links{margin-left:auto;display:flex;gap:18px;font-size:14px}
-nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a{text-decoration:none;color:var(--muted);white-space:nowrap}
 nav.links a:hover{color:var(--ink)}
 
 .hero{padding-block:44px 28px;display:grid;gap:10px}
@@ -140,7 +140,7 @@ footer{margin-top:28px;font-size:12px;color:var(--muted);display:flex;justify-co
   .doc-meta div:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .about{grid-template-columns:1fr}
   .step{grid-template-columns:1fr;gap:8px}
-  nav.links{margin-left:0}
+  nav.links{margin-left:0;gap:14px;flex-wrap:wrap;row-gap:6px}
 }
 @media (prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
 
@@ -156,6 +156,21 @@ footer{margin-top:28px;font-size:12px;color:var(--muted);display:flex;justify-co
 .sh-card a{font-size:13px;font-weight:500;text-decoration:none;line-height:1.4}
 .sh-card span{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
 @media (max-width:640px){.short-wrap{grid-template-columns:1fr}.short-wrap video{max-width:280px}}
+/* Lectures */
+.lec-list{display:grid;gap:10px;margin:8px 0 40px;padding:0;list-style:none}
+.lec-item{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px 18px;text-decoration:none;color:inherit}
+a.lec-item:hover{border-color:var(--callout)}
+.lec-no{font-family:var(--font-display,'Do Hyeon');font-size:26px;color:var(--callout)}
+.lec-item h3{margin:0 0 4px;font-size:16px}.lec-item p{margin:0;color:var(--muted);font-size:13px}
+.lec-st{font-family:var(--font-mono);font-size:11px;padding:4px 8px;border:1px solid var(--line);border-radius:3px;color:var(--muted);white-space:nowrap}
+.lec-st.on{border-color:var(--callout);color:var(--callout)}
+.lec-item.soon{opacity:.6}
+.lec-video{margin:0 0 28px}.lec-video video{width:100%;aspect-ratio:16/9;border-radius:6px;background:#1b2230;display:block}
+.lec-sec{margin:0 0 28px}.lec-sec h2{font-size:20px;margin:0 0 10px}.lec-sec ul{padding-left:20px}
+.lec-nav{display:flex;justify-content:space-between;gap:12px;margin:32px 0;flex-wrap:wrap}
+.lec-nav a{flex:1 1 220px;border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:14px 16px;text-decoration:none;font-size:14px}
+.lec-nav a.nx{text-align:right}
+@media (max-width:640px){.lec-item{grid-template-columns:44px minmax(0,1fr)}.lec-st{grid-column:2;justify-self:start}}
 /* Portfolio */
 .pf-hero{padding-block:44px 30px;display:grid;gap:12px}
 .pf-hero h1{font-family:var(--font-display);font-weight:400;font-size:clamp(40px,8vw,68px);line-height:1.05;margin:0;display:grid;gap:10px}
@@ -221,6 +236,7 @@ footer{margin-top:28px;font-size:12px;color:var(--muted);display:flex;justify-co
     <nav class="links" aria-label="주요 메뉴">
       <a href="#top">가이드</a>
       <a href="#shorts">쇼츠</a>
+      <a href="#lectures">클로드 강의</a>
       <a href="#portfolio">포트폴리오</a>
       <a href="#about">소개</a>
       <a href="#about">문의</a>
@@ -708,8 +724,51 @@ function renderShorts(){
   ${aboutHTML()}`;
   bindCopy();window.scrollTo(0,0);
 }
+const LECTURES=[{"id": "L01", "no": 1, "title": "클로드 시작하기", "min": 3, "summary": "클로드가 무엇인지, 어디서 쓰는지, 화면은 어떻게 생겼는지. 처음 쓰는 기획자·실무자가 첫 대화를 시작하기까지 필요한 것만 정리했어요.", "sections": [["클로드는 이런 도구예요", "<p>클로드는 Anthropic이 만든 AI 어시스턴트예요. 질문에 답하는 것을 넘어 <b>문서 요약, 표 정리, 초안 작성, 검토</b>처럼 실무에서 시간이 많이 드는 일을 함께 처리해 줍니다.</p><p>기획자에게는 특히 이런 일에 잘 맞아요.</p><ul><li>회의록 정리와 할 일 뽑기</li><li>요구사항·정책 초안 작성</li><li>경쟁 서비스 비교, 자료 요약</li><li>문장 다듬기, 보고서 구조 잡기</li></ul>"], ["어디서 쓰나요", "<div class='tbl'><table><tr><th>방법</th><th>특징</th></tr><tr><td>웹 (claude.ai)</td><td>브라우저에서 바로 사용. 가장 간단해요.</td></tr><tr><td>데스크톱 앱</td><td>윈도우·맥용. 내 컴퓨터 파일과 함께 쓰기 편해요.</td></tr><tr><td>모바일 앱</td><td>이동 중 질문, 사진·음성으로 입력.</td></tr></table></div><p>모두 같은 계정으로 로그인하면 대화 기록이 이어집니다. 무료로 시작할 수 있고, 더 많이 쓰려면 유료 요금제가 있어요. 요금은 바뀔 수 있으니 공식 요금 페이지에서 확인하세요.</p>"], ["화면 구성 4가지만 기억하기", "<div class='tbl'><table><tr><th>영역</th><th>하는 일</th></tr><tr><td>입력창</td><td>질문을 쓰고, 파일·이미지를 첨부</td></tr><tr><td>대화 목록</td><td>지난 대화를 다시 열어 이어가기</td></tr><tr><td>프로젝트</td><td>관련 자료와 지침을 모아두는 공간 (4강)</td></tr><tr><td>아티팩트</td><td>표·문서·화면 같은 결과물을 옆 창에 띄워 보기 (5강)</td></tr></table></div>"], ["첫 대화는 이렇게", "<p>처음에는 거창한 질문보다 <b>지금 하고 있는 일 하나</b>를 맡겨 보세요. 답이 마음에 들지 않으면 새로 묻지 말고 <b>\"더 짧게\", \"표로\", \"초보자 기준으로\"</b>처럼 이어서 요청하면 됩니다.</p>"]], "practice": [["실습 1 · 자기소개 후 질문하기", "나는 웹 서비스 기획자야. 주로 화면설계서와 요구사항 정의서를 써.\n이번 주에 회원가입 화면을 기획해야 하는데, 먼저 확인해야 할 항목을 10개만 체크리스트로 정리해줘."], ["실습 2 · 답을 이어서 다듬기", "방금 체크리스트를 '정책 / 화면 / 개발 확인' 세 그룹으로 나눠서 표로 다시 정리해줘."]]}, {"id": "L02", "no": 2, "title": "프롬프트 기본기 4요소", "min": 3, "summary": "같은 질문도 쓰는 방법에 따라 답이 달라져요. 역할·목적·맥락·형식, 네 가지만 넣으면 원하는 답에 훨씬 빨리 도착합니다.", "sections": [["왜 답이 마음에 안 들까", "<p>\"회원가입 정책 알려줘\"처럼 짧게 물으면 클로드는 <b>누구를 위해, 어디에 쓸지</b> 모른 채 일반적인 답을 줍니다. 답이 두루뭉술한 건 대부분 질문에 정보가 부족해서예요.</p>"], ["4요소", "<div class='tbl'><table><tr><th>요소</th><th>질문</th><th>예시</th></tr><tr><td><b>역할</b></td><td>누구로서 답할까?</td><td>15년차 웹 서비스 기획자로서</td></tr><tr><td><b>목적</b></td><td>무엇을 하려는가?</td><td>회원가입 정책 회의 안건을 만들려고</td></tr><tr><td><b>맥락</b></td><td>어떤 상황인가?</td><td>8개 사이트를 통합회원으로 바꾸는 중</td></tr><tr><td><b>형식</b></td><td>어떤 모양으로?</td><td>표, 항목 10개 이내, 확정 필요 여부 표시</td></tr></table></div>"], ["나쁜 예와 좋은 예", "<div class='tbl'><table><tr><th>나쁜 예</th><th>좋은 예</th></tr><tr><td>회원가입 정책 알려줘</td><td>너는 웹 서비스 기획자야. 여러 사이트를 통합회원으로 바꾸는 프로젝트에서 회원가입 정책 회의를 준비 중이야. 결정해야 할 항목을 표로 10개 이내, '확정 필요' 열을 넣어서 정리해줘.</td></tr></table></div>"], ["추가로 쓰면 좋은 것", "<ul><li><b>예시 한 줄</b> — 원하는 결과의 샘플을 보여주면 모양을 바로 따라와요.</li><li><b>하지 말 것</b> — \"추측하지 말고 모르면 '확인 필요'로 표시해\"</li><li><b>대상</b> — \"개발자가 읽을 문서야\", \"임원 보고용이야\"</li></ul>"]], "practice": [["실습 · 4요소 템플릿", "[역할] 너는 15년차 웹 서비스 기획자야.\n[목적] ______을(를) 하려고 해.\n[맥락] 지금 상황은 ______이야.\n[형식] 결과는 ______ 형태로, ______개 이내로 정리해줘.\n모르는 내용은 추측하지 말고 '확인 필요'로 표시해."], ["실습 · 바로 써보기", "너는 15년차 웹 서비스 기획자야. 관리자 대시보드를 기획하려고 해. 사용자는 총괄 관리자와 지부 관리자 두 종류야.\n첫 화면에 들어갈 카드를 역할별로 표로 정리해줘. 열은 '카드명 / 총괄 / 지부 / 이유'로 해줘."]]}, {"id": "L03", "no": 3, "title": "업무 문서 다루기", "min": 3, "summary": "PDF, 엑셀, 회의록을 붙여 넣고 요약·비교·변환하기. 첨부 파일로 일할 때 결과를 믿을 수 있게 만드는 요청 방법까지.", "sections": [["파일을 첨부하는 방법", "<p>입력창의 첨부 버튼을 누르거나 파일을 끌어다 놓으면 됩니다. PDF, 워드, 엑셀, 이미지(화면 캡처)를 함께 올릴 수 있어요. 긴 문서는 <b>어느 부분을 볼지</b> 같이 알려주면 결과가 정확해집니다.</p>"], ["자주 쓰는 요청 4가지", "<div class='tbl'><table><tr><th>작업</th><th>요청 예시</th></tr><tr><td>요약</td><td>이 RFP를 '사업 범위 / 일정 / 평가 기준'으로 나눠 요약해줘</td></tr><tr><td>표 정리</td><td>첨부한 엑셀에서 신규 화면만 골라 화면ID·화면명으로 표로 줘</td></tr><tr><td>비교</td><td>두 버전 기획서에서 바뀐 부분만 골라줘</td></tr><tr><td>변환</td><td>회의록을 요구사항 정의서 형식으로 바꿔줘</td></tr></table></div>"], ["근거를 같이 받기", "<p>문서 기반 작업은 <b>\"어느 페이지, 어느 문장에서 나온 내용인지 같이 적어줘\"</b>를 붙이세요. 근거가 함께 오면 확인 시간이 줄고, 문서에 없는 내용이 섞이는 것도 막을 수 있어요.</p>"], ["주의할 점", "<ul><li>회사 기밀·개인정보가 담긴 파일은 회사 보안 규정을 먼저 확인하세요.</li><li>숫자·날짜는 원문과 한 번 더 대조하세요.</li><li>결과는 초안입니다. 최종 문서는 사람이 검토해서 확정해요 (8강).</li></ul>"]], "practice": [["실습 1 · RFP 요약", "첨부한 제안요청서를 아래 형식으로 요약해줘.\n1) 사업 개요 3줄\n2) 과업 범위 (표: 구분 / 내용 / 페이지)\n3) 일정과 마감\n4) 평가 기준과 배점\n각 항목마다 근거가 된 페이지 번호를 적어줘. 문서에 없는 내용은 쓰지 마."], ["실습 2 · 회의록 → 할 일", "아래 회의록에서 결정사항, 보류 항목, 할 일을 나눠줘.\n할 일은 '담당 / 내용 / 기한' 표로, 기한이 언급되지 않았으면 '미정'으로 적어줘.\n\n[회의록 붙여넣기]"]]}];
+const CURRICULUM=[["L01", "클로드 시작하기", "가입부터 첫 대화까지, 화면 구성 익히기"], ["L02", "프롬프트 기본기 4요소", "역할·목적·맥락·형식으로 원하는 답 받기"], ["L03", "업무 문서 다루기", "파일 첨부, 요약, 표 정리, 회의록 변환"], ["L04", "프로젝트로 업무 맥락 저장하기", "매번 설명하지 않게 자료와 지침 모아두기"], ["L05", "아티팩트로 결과물 만들기", "표·문서·화면 시안을 바로 보고 고치기"], ["L06", "엑셀·PPT 작업에 활용하기", "수식, 데이터 정리, 발표 자료 초안"], ["L07", "기획 문서 초안 만들기", "요구사항 정의서, 화면설계 디스크립션"], ["L08", "검수와 사실 확인", "AI 답변을 그대로 쓰지 않는 습관"], ["L09", "반복 업무를 스킬로 만들기", "자주 하는 작업을 한 번에 실행하기"], ["L10", "커넥터로 업무 도구 연결하기", "드라이브·메일·노션과 함께 쓰기"]];
+
+const lecHash=l=>"lec"+l.id.slice(1);
+function renderLectures(){
+  const pub=new Set(LECTURES.map(l=>l.id));
+  app.innerHTML=`<section class="hero" id="top"><span class="eyebrow">Claude Course · 입문</span>
+    <h1>기획자·실무자를 위한<br><em>클로드 강의</em></h1>
+    <p>처음 쓰는 사람도 따라올 수 있게, 강의마다 글 · 영상 · 복사용 실습 프롬프트를 함께 담았어요. 전체 ${CURRICULUM.length}강 중 ${LECTURES.length}강 공개.</p></section>
+  <ol class="lec-list">${CURRICULUM.map(([id,t,d],i)=>{const on=pub.has(id);const L=LECTURES.find(x=>x.id===id);
+    const inner=`<span class="lec-no">${String(i+1).padStart(2,"0")}</span><div><h3>${esc(t)}</h3><p>${esc(d)}</p></div><span class="lec-st ${on?"on":""}">${on?`영상 ${L.min}분`:"공개 예정"}</span>`;
+    return on?`<li><a class="lec-item" href="#${lecHash(L)}">${inner}</a></li>`:`<li><div class="lec-item soon">${inner}</div></li>`}).join("")}</ol>
+  ${aboutHTML()}`;
+  bindCopy();window.scrollTo(0,0);
+}
+function renderLecture(L){
+  const i=LECTURES.indexOf(L),pv=LECTURES[i-1],nx=LECTURES[i+1];
+  const vid="LEC-"+L.id.slice(1);
+  app.innerHTML=`<article class="detail">
+    <a class="back" href="#lectures">← 강의 목록</a>
+    <header class="doc-head">
+      <dl class="doc-meta">
+        <div><dt>강의</dt><dd>${L.no}강 / ${CURRICULUM.length}강</dd></div>
+        <div><dt>대상</dt><dd>기획자·실무자 입문</dd></div>
+        <div><dt>도구</dt><dd>Claude</dd></div>
+        <div><dt>영상</dt><dd>약 ${L.min}분</dd></div>
+      </dl>
+      <div class="doc-title"><h1>${esc(L.title)}</h1><p>${esc(L.summary)}</p></div>
+    </header>
+    <section class="lec-video" aria-label="강의 영상"><video controls playsinline preload="none" poster="${vid}.jpg" src="${vid}.mp4"></video></section>
+    <ol class="steps">
+      ${L.sections.map(([t,b],j)=>`<li class="step"><span class="num">${j+1}</span><div class="step-body"><h2>${esc(t)}</h2>${b}</div></li>`).join("")}
+      <li class="step"><span class="num">✎</span><div class="step-body"><h2>실습 프롬프트</h2><p>복사해서 클로드에 그대로 붙여 넣어 보세요.</p>
+        ${L.practice.map(([t,p])=>`<div class="copy"><span class="clabel">${esc(t)}</span><pre>${esc(p)}</pre></div>`).join("")}</div></li>
+    </ol>
+    <nav class="lec-nav">${pv?`<a href="#${lecHash(pv)}">← ${pv.no}강 ${esc(pv.title)}</a>`:"<span></span>"}${nx?`<a class="nx" href="#${lecHash(nx)}">${nx.no}강 ${esc(nx.title)} →</a>`:`<a class="nx" href="#lectures">다음 강의는 곧 공개돼요 · 목록으로 →</a>`}</nav>
+  </article>
+  ${aboutHTML()}`;
+  bindCopy();window.scrollTo(0,0);
+}
 function route(){
   const id=location.hash.slice(1);
+  const L=LECTURES.find(x=>lecHash(x)===id);
+  if(L){renderLecture(L);return}
+  if(id==="lectures"){renderLectures();return}
   const g=GUIDES.find(x=>x.id===id);
   if(g){renderDetail(g);return}
   if(id==="portfolio"){renderPortfolio();return}
